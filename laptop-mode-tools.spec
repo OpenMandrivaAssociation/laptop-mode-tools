@@ -11,6 +11,7 @@ Patch2:		laptop-mode-tools-1.32-nolsbecho.patch
 License:	GPL
 Group:		System/Kernel and hardware
 Url:		http://www.samwel.tk/laptop_mode/index.html
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Conflicts:	suspend-scripts < 1.9.2
 Requires:	hdparm sdparm
 Requires(post):	rpm-helper
