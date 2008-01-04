@@ -1,13 +1,10 @@
 Summary:	Userland scripts to control "laptop mode"
 Name:		laptop-mode-tools
-Version:	1.32
-Release:	%mkrel 2
+Version:	1.35
+Release:	%mkrel 1
 
-Source0:	http://www.samwel.tk/laptop_mode/tools/downloads/%{name}-%{version}.tar.bz2
-#Patch0:		laptop-mode-tools-1.27-subsys.patch
+Source0:	http://www.samwel.tk/laptop_mode/tools/downloads/%{name}_%{version}.tar.gz
 Patch1:		laptop-mode-tools-1.11-lsb.patch
-# (fc) 1.32-2mdv don't use unexisting echo lsb function (use 1.31 initscript)
-Patch2:		laptop-mode-tools-1.32-nolsbecho.patch
 License:	GPL
 Group:		System/Kernel and hardware
 Url:		http://www.samwel.tk/laptop_mode/index.html
@@ -27,9 +24,7 @@ mode.
 
 %prep
 %setup -q
-#%patch0 -p1 -b .subsys
 %patch1 -p1 -b .lsb
-%patch2 -p1 -b .noecholsb
 perl -pi -e 's|LM_AC_HD_IDLE_TIMEOUT_SECONDS=5|LM_AC_HD_IDLE_TIMEOUT_SECONDS=120||g' etc/laptop-mode/laptop-mode.conf
 perl -pi -e 's|LM_BATT_HD_IDLE_TIMEOUT_SECONDS=5|LM_BATT_HD_IDLE_TIMEOUT_SECONDS=120||g' etc/laptop-mode/laptop-mode.conf
 
@@ -58,7 +53,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc README
 %{_sbindir}/*
 %dir %{_sysconfdir}/laptop-mode
-%dir %{_sysconfdir}/laptop-mode/*/
+%{_sysconfdir}/laptop-mode/*-start
+%{_sysconfdir}/laptop-mode/*-stop
+%dir %{_sysconfdir}/laptop-mode/*.d
+%config(noreplace) %{_sysconfdir}/laptop-mode/conf.d/*.conf
 %config(noreplace) %{_sysconfdir}/laptop-mode/*.conf
 %config(noreplace) %{_sysconfdir}/acpi/events/*
 %{_sysconfdir}/acpi/actions/*
