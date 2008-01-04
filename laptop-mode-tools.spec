@@ -6,7 +6,7 @@ Source0:	http://www.samwel.tk/laptop_mode/tools/downloads/%{name}_%{version}.tar
 Patch1:		laptop-mode-tools-1.11-lsb.patch
 License:	GPL
 Group:		System/Kernel and hardware
-Url:		http://www.samwel.tk/laptop_mode/index.html
+Url:		http://www.samwel.tk/laptop_mode/laptop_mode
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Conflicts:	suspend-scripts < 1.9.2
 Requires:	hdparm sdparm
