@@ -25,8 +25,6 @@ mode.
 %prep
 %setup -q
 %patch1 -p1 -b .lsb
-perl -pi -e 's|LM_AC_HD_IDLE_TIMEOUT_SECONDS=5|LM_AC_HD_IDLE_TIMEOUT_SECONDS=120||g' etc/laptop-mode/laptop-mode.conf
-perl -pi -e 's|LM_BATT_HD_IDLE_TIMEOUT_SECONDS=5|LM_BATT_HD_IDLE_TIMEOUT_SECONDS=120||g' etc/laptop-mode/laptop-mode.conf
 
 %install
 rm -rf $RPM_BUILD_ROOT
