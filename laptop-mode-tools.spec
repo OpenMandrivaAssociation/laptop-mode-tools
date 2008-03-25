@@ -1,7 +1,7 @@
 Summary:	Userland scripts to control "laptop mode"
 Name:		laptop-mode-tools
 Version:	1.36
-Release:	%mkrel 2
+Release:	%mkrel 3
 Source0:	http://www.samwel.tk/laptop_mode/tools/downloads/%{name}_%{version}.tar.gz
 Patch1:		laptop-mode-tools-1.11-lsb.patch
 License:	GPL
@@ -56,7 +56,7 @@ rm -rf %{buildroot}
 %config(noreplace) %{_sysconfdir}/laptop-mode/conf.d/*.conf
 %config(noreplace) %{_sysconfdir}/laptop-mode/*.conf
 %config(noreplace) %{_sysconfdir}/acpi/events/*
-%{_sysconfdir}/acpi/actions/*
+%attr(755,root,root) %{_sysconfdir}/acpi/actions/*
 %{_sysconfdir}/apm
 %{_initrddir}/*
 %{_mandir}/man8/*
