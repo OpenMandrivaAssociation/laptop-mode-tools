@@ -1,10 +1,10 @@
 Summary:	Userland scripts to control "laptop mode"
 Name:		laptop-mode-tools
-Version:	1.36
-Release:	%mkrel 3
+Version:	1.41
+Release:	%mkrel 1
 Source0:	http://www.samwel.tk/laptop_mode/tools/downloads/%{name}_%{version}.tar.gz
 Patch1:		laptop-mode-tools-1.11-lsb.patch
-License:	GPL
+License:	GPLv2
 Group:		System/Kernel and hardware
 Url:		http://www.samwel.tk/laptop_mode/laptop_mode
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
