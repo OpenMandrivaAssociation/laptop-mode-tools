@@ -54,6 +54,8 @@ rm -rf %{buildroot}
 %config(noreplace) %{_sysconfdir}/laptop-mode/*.conf
 %config(noreplace) %{_sysconfdir}/acpi/events/*
 %attr(755,root,root) %{_sysconfdir}/acpi/actions/*
+%{_sysconfdir}/power/event.d/laptop-mode
+%{_sysconfdir}/power/scripts.d/laptop-mode
 %{_sysconfdir}/apm
 %{_initrddir}/*
 %{_mandir}/man8/*
