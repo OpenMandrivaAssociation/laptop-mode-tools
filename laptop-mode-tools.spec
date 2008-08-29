@@ -27,14 +27,11 @@ mode.
 
 %install
 rm -rf %{buildroot}
-install -m755 usr/sbin/laptop_mode -D %{buildroot}%{_sbindir}/laptop_mode
-cp usr/sbin/lm* %{buildroot}%{_sbindir}
-install -m755 etc/init.d/laptop-mode -D %{buildroot}%{_initrddir}/laptop-mode
-mkdir -p %{buildroot}%{_mandir}
-cp -r man %{buildroot}%{_mandir}/man8
-cp -r etc/laptop-mode %{buildroot}%{_sysconfdir}
-cp -r etc/acpi %{buildroot}%{_sysconfdir}
-cp -r etc/apm %{buildroot}%{_sysconfdir}
+DESTDIR=%{buildroot} \
+INIT_D=%{buildroot}%{_initrddir} \
+MAN_D=%{_mandir} \
+INSTALL="install" \
+  ./install.sh
 
 %post
 %_post_service laptop-mode
