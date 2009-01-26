@@ -1,15 +1,16 @@
 Summary:	Userland scripts to control "laptop mode"
 Name:		laptop-mode-tools
-Version:	1.45
-Release:	%mkrel 2
+Version:	1.46
+Release:	%mkrel 1
 Source0:	http://www.samwel.tk/laptop_mode/tools/downloads/%{name}_%{version}.tar.gz
 Patch1:		laptop-mode-tools-1.11-lsb.patch
 License:	GPLv2
 Group:		System/Kernel and hardware
-Url:		http://www.samwel.tk/laptop_mode/laptop_mode
+URL:		http://www.samwel.tk/laptop_mode/laptop_mode
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Conflicts:	suspend-scripts < 1.9.2
-Requires:	hdparm sdparm
+Requires:	hdparm
+Requires:	sdparm
 Requires(post):	rpm-helper
 Requires(preun):rpm-helper
 BuildArch:	noarch
@@ -27,6 +28,10 @@ mode.
 
 %install
 rm -rf %{buildroot}
+
+#not created during install
+mkdir -p %{buildroot}%{_sysconfdir}/pm/sleep.d
+
 DESTDIR=%{buildroot} \
 INIT_D=%{buildroot}%{_initrddir} \
 MAN_D=%{_mandir} \
@@ -57,8 +62,10 @@ rm -rf %{buildroot}
 %{_sysconfdir}/power/event.d/laptop-mode
 %{_sysconfdir}/power/scripts.d/laptop-mode
 %{_sysconfdir}/apm
+%{_sysconfdir}/pm
 %{_initrddir}/*
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/modules
 %{_datadir}/%{name}/modules/*
+%{_datadir}/%{name}/module-helpers/*
 %{_mandir}/man8/*
