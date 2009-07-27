@@ -1,6 +1,6 @@
 Summary:	Userland scripts to control "laptop mode"
 Name:		laptop-mode-tools
-Version:	1.49
+Version:	1.50
 Release:	%mkrel 1
 Source0:	http://www.samwel.tk/laptop_mode/tools/downloads/%{name}_%{version}.tar.gz
 Patch1:		laptop-mode-tools-1.11-lsb.patch
@@ -51,6 +51,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc README
 %{_sbindir}/*
+%{_prefix}/lib/pm-utils/sleep.d/99laptop-mode
 %dir %{_sysconfdir}/laptop-mode
 %{_sysconfdir}/laptop-mode/*-start
 %{_sysconfdir}/laptop-mode/*-stop
