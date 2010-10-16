@@ -16,7 +16,7 @@ Requires(preun):rpm-helper
 BuildArch:	noarch
 
 %description
-Userland scripts to control "laptop mode" Laptop mode is a Linux
+Userland scripts to control "laptop mode". Laptop mode is a Linux
 kernel feature that allows your laptop to save considerable power, by
 allowing the hard drive to spin down for longer periods of time. This
 package contains the userland scripts that are needed to enable laptop
