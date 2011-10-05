@@ -1,10 +1,9 @@
 Summary:	Userland scripts to control "laptop mode"
 Name:		laptop-mode-tools
-Version:	1.57
-Release:	%mkrel 3
+Version:	1.59
+Release:	%mkrel 1
 Source0:	http://www.samwel.tk/laptop_mode/tools/downloads/%{name}_%{version}.tar.gz
 Patch1:		laptop-mode-tools-1.11-lsb.patch
-Patch2:		fix-kernel-release-detection.patch
 Patch3:		brcmsmac-has-no-power-management-support.patch
 License:	GPLv2+
 Group:		System/Kernel and hardware
@@ -25,9 +24,8 @@ package contains the userland scripts that are needed to enable laptop
 mode.
 
 %prep
-%setup -q -n %{name}_%{version}
+%setup -q -n %{name}-%{version}
 %patch1 -p1 -b .lsb
-%patch2 -p1
 %patch3 -p1
 
 %install
@@ -70,6 +68,7 @@ rm -rf %{buildroot}
 %{_sysconfdir}/apm
 %{_sysconfdir}/pm
 %{_initrddir}/*
+/lib/udev/*
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/modules
 %{_datadir}/%{name}/modules/*
