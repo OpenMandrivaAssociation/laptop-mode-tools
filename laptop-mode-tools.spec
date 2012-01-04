@@ -64,6 +64,7 @@ INSTALL="install" \
 /lib/udev/*
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/modules
+%dir %{_datadir}/%{name}/module-helpers
 %{_datadir}/%{name}/modules/*
 %{_datadir}/%{name}/module-helpers/*
 %{_mandir}/man8/*
