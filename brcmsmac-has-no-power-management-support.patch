@@ -1,0 +1,13 @@
+diff --git a/usr/share/laptop-mode-tools/modules/wireless-power b/usr/share/laptop-mode-tools/modules/wireless-power
+index 6407d2a..c17d668 100755
+--- a/usr/share/laptop-mode-tools/modules/wireless-power
++++ b/usr/share/laptop-mode-tools/modules/wireless-power
+@@ -7,7 +7,7 @@
+ #          the iwconfig power command.
+ #
+ 
+-[ "$WIRELESS_POWER_SAVING_EXCLUDE_DRIVERS" ] || WIRELESS_POWER_SAVING_EXCLUDE_DRIVERS="iwl3945 iwl4965 iwlagn ipw3945 ipw2200 ipw2100"
++[ "$WIRELESS_POWER_SAVING_EXCLUDE_DRIVERS" ] || WIRELESS_POWER_SAVING_EXCLUDE_DRIVERS="iwl3945 iwl4965 iwlagn ipw3945 ipw2200 ipw2100 brcmsmac"
+ 
+ #
+ # Find all the wireless devices that do not use an excluded driver.
