@@ -1,0 +1,20 @@
+diff --git a/usr/sbin/laptop_mode b/usr/sbin/laptop_mode
+index 4fa34e7..dc5bbbb 100755
+--- a/usr/sbin/laptop_mode
++++ b/usr/sbin/laptop_mode
+@@ -502,12 +502,9 @@ lmt_main_function ()
+     )"
+ 
+     case "$KLEVEL" in
+-	    "2.4" ) ;;
+-	    "2.6" ) ;;
+-	    *)
+-		    log "ERR" "Unhandled kernel version: $KLEVEL ('uname -r' = '$(uname -r)')" >&2
+-		    exit 1
+-		    ;;
++    1.*|2.[0123])
++	    log "ERR" "Unhandled kernel version: $KLEVEL ('uname -r' = '$(uname -r)')" >&2
++	    exit 1
+     esac
+ 
+     # Stop exporting everything -- what we do from here is private.
