@@ -1,19 +1,17 @@
 Summary:	Userland scripts to control "laptop mode"
 Name:		laptop-mode-tools
 Version:	1.61
-Release:	%mkrel 1
+Release:	1
+License:	GPLv2+
+Group:		System/Kernel and hardware
+Url:		http://www.samwel.tk/laptop_mode/laptop_mode
 Source0:	http://www.samwel.tk/laptop_mode/tools/downloads/%{name}_%{version}.tar.gz
 Patch1:		laptop-mode-tools-1.11-lsb.patch
 Patch3:		brcmsmac-has-no-power-management-support.patch
-License:	GPLv2+
-Group:		System/Kernel and hardware
-URL:		http://www.samwel.tk/laptop_mode/laptop_mode
-Conflicts:	suspend-scripts < 1.9.2
+BuildArch:	noarch
 Requires:	hdparm
 Requires:	sdparm
-Requires(post):	rpm-helper
-Requires(preun):rpm-helper
-BuildArch:	noarch
+Requires(post,postun):	rpm-helper
 
 %description
 Userland scripts to control "laptop mode". Laptop mode is a Linux
@@ -23,9 +21,8 @@ package contains the userland scripts that are needed to enable laptop
 mode.
 
 %prep
-%setup -q -n %{name}_%{version}
-%patch1 -p1 -b .lsb
-%patch3 -p1
+%setup -q
+%apply_patches
 
 %install
 #not created during install
@@ -68,3 +65,4 @@ INSTALL="install" \
 %{_datadir}/%{name}/modules/*
 %{_datadir}/%{name}/module-helpers/*
 %{_mandir}/man8/*
+
