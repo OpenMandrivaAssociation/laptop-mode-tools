@@ -21,7 +21,7 @@ package contains the userland scripts that are needed to enable laptop
 mode.
 
 %prep
-%setup -q
+%setup -qn %{name}_%{version}
 %apply_patches
 
 %install
