@@ -28,7 +28,7 @@ mode.
 mkdir -p %{buildroot}%{_sysconfdir}/pm/sleep.d
 
 DESTDIR=%{buildroot} \
-ULIB_D=%{buildroot}%{_libdir} \
+ULIB_D=%{_libdir} \
 MAN_D=%{_mandir} \
 INSTALL="install" \
   ./install.sh
@@ -50,6 +50,7 @@ INSTALL="install" \
 %{_sysconfdir}/power/scripts.d/laptop-mode
 %{_sysconfdir}/apm
 %{_sysconfdir}/pm
+%{_unitdir}/laptop-mode.service
 /lib/udev/*
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/modules
