@@ -35,7 +35,7 @@ INSTALL="install" \
   ./install.sh
 
 # (tpg) not needed
-rm -rf %{buildroot}%{_initdir}/laptop-mode
+rm -rf %{buildroot}%{_sysconfdir}/init.d/laptop-mode
 
 install -d %{buildroot}%{_presetdir}
 cat > %{buildroot}%{_presetdir}/86-laptop-mode.preset << EOF
@@ -45,7 +45,6 @@ EOF
 %files
 %doc README
 %{_sbindir}/*
-%{_prefix}/lib/pm-utils/sleep.d/01laptop-mode
 %dir %{_sysconfdir}/laptop-mode
 %{_sysconfdir}/laptop-mode/*-start
 %{_sysconfdir}/laptop-mode/*-stop
@@ -54,7 +53,6 @@ EOF
 %config(noreplace) %{_sysconfdir}/laptop-mode/*.conf
 %config(noreplace) %{_sysconfdir}/acpi/events/*
 %attr(755,root,root) %{_sysconfdir}/acpi/actions/*
-%{_sysconfdir}/udev/rules.d/99-laptop-mode.rules
 %{_sysconfdir}/power/event.d/laptop-mode
 %{_sysconfdir}/power/scripts.d/laptop-mode
 %{_sysconfdir}/apm
