@@ -29,12 +29,13 @@ mkdir -p %{buildroot}%{_sysconfdir}/pm/sleep.d
 
 DESTDIR=%{buildroot} \
 ULIB_D=%{_libdir} \
+TMPFILES_D=%{_tmpfilesdir} \
 MAN_D=%{_mandir} \
 INSTALL="install" \
   ./install.sh
 
 # (tpg) not needed
-rm -rf %{_initdir}/laptop-mode
+rm -rf %{buildroot}%{_initdir}/laptop-mode
 
 install -d %{buildroot}%{_presetdir}
 cat > %{buildroot}%{_presetdir}/86-laptop-mode.preset << EOF
