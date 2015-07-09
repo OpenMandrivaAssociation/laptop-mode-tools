@@ -1,12 +1,11 @@
 Summary:	Userland scripts to control "laptop mode"
 Name:		laptop-mode-tools
-Version:	1.61
-Release:	8
+Version:	1.67
+Release:	1
 License:	GPLv2+
 Group:		System/Kernel and hardware
 Url:		http://www.samwel.tk/laptop_mode/laptop_mode
-Source0:	http://www.samwel.tk/laptop_mode/tools/downloads/%{name}_%{version}.tar.gz
-Patch1:		laptop-mode-tools-1.11-lsb.patch
+Source0:	http://samwel.tk/laptop_mode/tools/downloads/%{name}_%{version}.tar.gz
 Patch3:		brcmsmac-has-no-power-management-support.patch
 BuildArch:	noarch
 Requires:	hdparm
@@ -29,16 +28,10 @@ mode.
 mkdir -p %{buildroot}%{_sysconfdir}/pm/sleep.d
 
 DESTDIR=%{buildroot} \
-INIT_D=%{buildroot}%{_initrddir} \
+ULIB_D=%{buildroot}%{_libdir} \
 MAN_D=%{_mandir} \
 INSTALL="install" \
   ./install.sh
-
-%post
-%_post_service laptop-mode
-
-%preun
-%_preun_service laptop-mode
 
 %files
 %doc README
@@ -57,7 +50,6 @@ INSTALL="install" \
 %{_sysconfdir}/power/scripts.d/laptop-mode
 %{_sysconfdir}/apm
 %{_sysconfdir}/pm
-%{_initrddir}/*
 /lib/udev/*
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/modules
