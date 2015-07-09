@@ -43,7 +43,7 @@ enable laptop-mode.service
 EOF
 
 %files
-%doc README
+%doc README.md
 %{_sbindir}/*
 %dir %{_sysconfdir}/laptop-mode
 %{_sysconfdir}/laptop-mode/*-start
