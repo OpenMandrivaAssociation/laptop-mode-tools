@@ -33,6 +33,14 @@ MAN_D=%{_mandir} \
 INSTALL="install" \
   ./install.sh
 
+# (tpg) not needed
+rm -rf %{_initdir}/laptop-mode
+
+install -d %{buildroot}%{_presetdir}
+cat > %{buildroot}%{_presetdir}/86-laptop-mode.preset << EOF
+enable laptop-mode.service
+EOF
+
 %files
 %doc README
 %{_sbindir}/*
@@ -50,7 +58,10 @@ INSTALL="install" \
 %{_sysconfdir}/power/scripts.d/laptop-mode
 %{_sysconfdir}/apm
 %{_sysconfdir}/pm
+%{_presetdir}/86-laptop-mode.preset
 %{_unitdir}/laptop-mode.service
+%{_libdir}/pm-utils/sleep.d/01laptop-mode
+%{_tmpfilesdir}/laptop-mode.conf
 /lib/udev/*
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/modules
