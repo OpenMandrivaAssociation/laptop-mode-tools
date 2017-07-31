@@ -1,10 +1,12 @@
+%define git_version 2017.06.23
+
 Summary:	Userland scripts to control "laptop mode"
 Name:		laptop-mode-tools
-Version:	1.67
-Release:	2
+Version:	%{git_version}
+Release:	1
 License:	GPLv2+
 Group:		System/Kernel and hardware
-Url:		http://www.samwel.tk/laptop_mode/laptop_mode
+Url:		https://github.com/rickysarraf/laptop-mode-tools
 Source0:	http://samwel.tk/laptop_mode/tools/downloads/%{name}_%{version}.tar.gz
 Patch3:		brcmsmac-has-no-power-management-support.patch
 BuildArch:	noarch
@@ -59,6 +61,8 @@ EOF
 %{_sysconfdir}/pm
 %{_presetdir}/86-laptop-mode.preset
 %{_unitdir}/laptop-mode.service
+%{_unitdir}/lmt-poll.service
+%{_unitdir}/laptop-mode.timer
 %{_libdir}/pm-utils/sleep.d/01laptop-mode
 %{_tmpfilesdir}/laptop-mode.conf
 /lib/udev/*
@@ -67,5 +71,9 @@ EOF
 %dir %{_datadir}/%{name}/module-helpers
 %{_datadir}/%{name}/modules/*
 %{_datadir}/%{name}/module-helpers/*
+%{_datadir}/%{name}/LMT.py
+%{_datadir}/pixmaps/laptop-mode-tools.svg
+%{_datadir}/applications/laptop-mode-tools.desktop
+%{_datadir}/polkit-1/actions/org.linux.lmt.gui.policy
 %{_mandir}/man8/*
 
