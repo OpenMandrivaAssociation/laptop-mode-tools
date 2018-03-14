@@ -1,13 +1,18 @@
-%define git_version 2017.06.23
+%define git_version %{nil}
 
 Summary:	Userland scripts to control "laptop mode"
 Name:		laptop-mode-tools
+%if "%{git_version}" != ""
 Version:	%{git_version}
+Source0:	%{name}_%{version}.tar.xz
+%else
+Version:	1.72.2
+Source0:	https://github.com/rickysarraf/laptop-mode-tools/releases/download/%{version}/laptop-mode-tools_%{version}.tar.gz
+%endif
 Release:	1
 License:	GPLv2+
 Group:		System/Kernel and hardware
 Url:		https://github.com/rickysarraf/laptop-mode-tools
-Source0:	http://samwel.tk/laptop_mode/tools/downloads/%{name}_%{version}.tar.gz
 Patch3:		brcmsmac-has-no-power-management-support.patch
 BuildArch:	noarch
 Requires:	hdparm
