@@ -28,7 +28,7 @@ mode.
 
 %prep
 %setup -qn %{name}_%{version}
-%apply_patches
+%autopatch -p1
 
 %install
 #not created during install
